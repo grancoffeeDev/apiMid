@@ -3,6 +3,8 @@ from model.teste import gcteste
 from connection.config import Database
 import json
 
+#python -m uvicorn main:app --reload
+
 app = FastAPI()
 
 @app.get("/")
@@ -20,7 +22,7 @@ def get_teste():
    return json.loads(r)
 
 @app.post("/gc_teste")
-def get_teste(gc_teste: gcteste):
+def post_teste(gc_teste: gcteste):
    query = "INSERT INTO public.gc_teste(nome) VALUES('{0}')".format(gc_teste.nome)
    db = Database()
    db.connect()

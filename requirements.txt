@@ -1,5 +1,5 @@
 pandas
-flask
 fastapi
-unicorn
+uvicorn
 psycopg2
+gunicorn
