@@ -9,7 +9,7 @@ app = FastAPI()
 
 @app.get("/")
 def home() :
-    return {}
+    return {"teste"}
 
 # Tabela public.gc_teste
 @app.get("/gc_teste")
