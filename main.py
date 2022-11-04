@@ -1,4 +1,4 @@
-from fastapi import *
+from fastapi import FastAPI
 from model.teste import gcteste
 from connection.config import Database
 import json
