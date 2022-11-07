@@ -3,3 +3,4 @@ fastapi
 gunicorn
 psycopg2
 uvicorn
+flask
