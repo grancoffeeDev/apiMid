@@ -1,6 +1,7 @@
 runtime: python310
 #entrypoint: gunicorn -b :$PORT main:app
 entrypoint: gunicorn -k uvicorn.workers.UvicornWorker main:app
+service: api-mid
 
 runtime_config:
   python_version: 3
