@@ -10,9 +10,3 @@ handlers:
 # Matches requests to /images/... to files in static/images/...
 - url: /.*
   script: auto
-
-env_variables:
-  SQL_USER: postgres
-  SQL_PASSWORD: VnBgPQbYzwa95VDm
-  SQL_DATABASE: TelemetriaGC
-  INSTANCE_CONNECTION_NAME: vmgc-e-commerce:southamerica-east1:middleware-pgsql
