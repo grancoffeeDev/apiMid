@@ -8,21 +8,6 @@ app = Flask(__name__)
 def get_gc_teste():
     return make_response(jsonify(mensagem='API do MID'))
 
-# Tabela public.gc_teste
-@app.route('/gc_teste', methods=['GET'])
-def get_teste():
-    conn = psycopg2.connect(
-        host="10.92.160.5",
-        database="TelemetriaGC",
-        user="postgres",
-        password="VnBgPQbYzwa95VDm")
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM GC_TESTE;')
-    p = json.dumps(cur.fetchall(),indent=4) 
-    cur.close()
-    conn.close()
-    return p
-
 @app.route('/gc_config', methods=['GET'])
 def get_teste():
     conn = psycopg2.connect(
