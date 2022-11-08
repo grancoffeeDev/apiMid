@@ -12,7 +12,7 @@ def get_gc_teste():
 @app.route('/gc_teste', methods=['GET'])
 def get_teste():
     conn = psycopg2.connect(
-        host="34.95.183.152",
+        host="10.92.160.5",
         database="TelemetriaGC",
         port="5432",
         user="postgres",
