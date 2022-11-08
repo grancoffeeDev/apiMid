@@ -14,12 +14,14 @@ def get_teste():
     conn = psycopg2.connect(
         host="10.92.160.5",
         database="TelemetriaGC",
-        port="5432",
         user="postgres",
         password="VnBgPQbYzwa95VDm")
     cur = conn.cursor()
     cur.execute('SELECT * FROM GC_TESTE;')
-    return json.dumps(cur.fetchall(),indent=4) 
+    p = json.dumps(cur.fetchall(),indent=4) 
+    cur.close()
+    conn.close()
+    return p
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
