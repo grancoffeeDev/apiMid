@@ -15,7 +15,7 @@ def get_teste():
         host="34.95.183.152",
         database="TelemetriaGC",
         port="5432",
-        user=os.environ['SQL_USER'],
+        user="postgres",
         password="VnBgPQbYzwa95VDm")
     cur = conn.cursor()
     cur.execute('SELECT * FROM GC_TESTE;')
@@ -23,6 +23,6 @@ def get_teste():
     
 
 if __name__ == '__main__':
-    #app.run(host='0.0.0.0', port=8080, debug=True)
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
+    #app.run(host='127.0.0.1', port=8080, debug=True)
     #app.run()
