@@ -1,6 +1,13 @@
 from flask import Flask, jsonify, request
 from db import *
 
+#https://www.smashingmagazine.com/2020/08/api-flask-google-cloudsql-app-engine/
+#https://github.com/GoogleCloudPlatform/cloud-sql-python-connector
+#https://cloud.google.com/sql/docs/postgres/connect-connectors#python_1
+#https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/#
+#https://www.geeksforgeeks.org/setting-up-google-cloud-sql-with-flask/
+#https://dev.to/gabrielosluz/get-data-from-cloud-sql-with-python-51jm
+
 app = Flask(__name__)
 
 @app.route('/')
