@@ -1,8 +1,32 @@
 from flask import *
 import psycopg2
 import json
+from google.cloud.sql.connector import Connector
+import sqlalchemy
 
 app = Flask(__name__)
+
+INSTANCE_CONNECTION_NAME = "vmgc-e-commerce:southamerica-east1:middleware-pgsql"
+DB_USER = "postgres"
+DB_PASS = "VnBgPQbYzwa95VDm"
+DB_NAME = "TelemetriaGC"
+
+connector = Connector()
+
+def getconn():
+    conn = connector.connect(
+        INSTANCE_CONNECTION_NAME,
+        "pg8000",
+        user=DB_USER,
+        password=DB_PASS,
+        db=DB_NAME
+    )
+    return conn
+
+pool = sqlalchemy.create_engine(
+    "postgresql+pg8000://",
+    creator=getconn,
+)
 
 @app.route('/', methods=['GET'])
 def get_gc_teste():
@@ -10,17 +34,10 @@ def get_gc_teste():
 
 @app.route('/gc_config', methods=['GET'])
 def get_teste():
-    conn = psycopg2.connect(
-        host="35.247.217.164",
-        database="grancoffee",
-        user="postgres",
-        password="VnBgPQbYzwa95VDm")
-    cur = conn.cursor()
-    cur.execute('select * from public.gc_config;')
-    p = json.dumps(cur.fetchall(),indent=4) 
-    cur.close()
-    conn.close()
-    return p
+    with pool.connect() as db_conn:
+       results = db_conn.execute("SELECT * FROM gc_teste").fetchall()
+       connector.close()
+       return results
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
