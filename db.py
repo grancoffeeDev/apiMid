@@ -34,7 +34,7 @@ def get_teste():
     with pool.connect() as db_conn:
       results = db_conn.execute("select * from gc_teste").fetchall()
       connector.close()
-      return jsonify(results)
+      return results
   
 def set_teste(name):
     insert_stmt = sqlalchemy.text("INSERT INTO gc_teste (nome) VALUES (:nome)")
@@ -42,4 +42,4 @@ def set_teste(name):
       db_conn.execute(insert_stmt, nome=name)
       results = db_conn.execute("select * from gc_teste").fetchall()
       connector.close()
-      return jsonify(results)
+      return results
