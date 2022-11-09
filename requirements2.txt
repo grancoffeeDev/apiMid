@@ -1,0 +1,7 @@
+Flask==2.2.2
+psycopg2-binary==2.9.5
+gunicorn
+cloud-sql-python-connector[pg8000]
+SQLAlchemy
+cloud-sql-python-connector==0.9.3
+pg8000==1.29.3
